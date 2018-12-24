@@ -4,6 +4,9 @@ This is a demo project to show how we can make use of CNN to classify a written 
 
 You can test the demo of this project over here: (https://digitcnn.herokuapp.com/)
 
+With just 3 epochs on a 35k training set the model achieved 93% accuracy.
+
+
 ## Getting Started
 
 1. Clone the repos into your system.
