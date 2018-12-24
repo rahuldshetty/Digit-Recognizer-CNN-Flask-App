@@ -36,4 +36,9 @@ To install a dependency pybase64 , use the following command: "pip install pybas
 ![3](https://raw.githubusercontent.com/rahuldshetty/Digit-Recognizer-CNN-Flask-App/master/snap3.PNG)
 ![4](https://raw.githubusercontent.com/rahuldshetty/Digit-Recognizer-CNN-Flask-App/master/snap4.PNG)
 
+## Model Used
+Below model design was used to construct the Neural network.
+![Model Architechrure](https://cdn-images-1.medium.com/max/1255/1*XbuW8WuRrAY5pC4t-9DZAQ.jpeg)
+Picture Reference from:(https://medium.com/@RaghavPrabhu/understanding-of-convolutional-neural-network-cnn-deep-learning-99760835f148)
+
 
