@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Digit Recognizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script>
+    <script src="https://unpkg.com/keras-js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+</head>
+
+<style>
+
+.container{
+    margin:auto;
+    width:50%;
+}
+
+.innerContainer{
+     margin:auto;
+    width:50%;
+}
+
+.inputSpecial{
+    font-family: 'Russo One';
+    font-size:20px;
+    padding:10px;
+    width:180px;
+    margin-bottom:10px;
+    display: block;
+    background:#039BE5;
+    transition:0.5  s;
+    color:white;
+}
+.inputSpecial:hover{
+    background:#FF5722;
+    color:white;
+}
+</style>
+
+
+<body>
+    
+    
+     <a href="/" style="font-family:'Russo One', sans-serif;color:#009688;font-size:40px;text-decoration:none;dispaly:block;">
+        Digit Recognizer with Convolutional neural network
+    </a>
+    <br>
+    
+    <div class="container">
+
+    <div class="innerContainer">
+        
+        <h4 style="font-family: 'Russo One'">Draw a digit below</h4>
+        <canvas id="canvas" width="280" height="280" style="border:1px solid black;"></canvas>
+
+    <br>
+        
+        
+
+        <form method="POST" action="/find" >
+            <p style="font-family: 'Russo One', sans-serif;color:#039BE5;font-size:19px;display:inline-block;" >Line Width: </p> <input type="range"  min="1" max="20" value="5" id="lineWidthSize" name="wa" >
+            <br>
+            <input type="hidden" id="uri" name="urwa" >
+            <input type="button" value="Reset" id="resetBtn" onclick="clearCanvas()" class="inputSpecial">           
+            <input type="submit" value="Process" class="inputSpecial">
+            
+        </form>
+
+        
+        <p  style="font-family: 'Russo One', sans-serif;color:#039BE5;font-size:19px;display:inline-block;">
+            Project Link :<a style="font-family:'Russo One', sans-serif;color:#009688;text-decoration:none;" href="https://github.com/rahuldshetty/Digit-Recognizer-CNN-Flask-App"> Visit Github </a>
+        </p>
+   
+
+    </div>
+
+    <script>
+      var canvas=document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+
+      var h=canvas.height;
+      var w=canvas.width;
+
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      var rectB = canvas.getBoundingClientRect();
+      var pos = { x: 0, y: 0 };
+
+      document.addEventListener('mousemove', draw);
+      document.addEventListener('mousedown', setPosition);
+      document.addEventListener('mouseup',processImage);
+      document.addEventListener('mouseenter', setPosition);
+
+      function setPosition(e) {
+          
+        pos.x = e.clientX - rectB.left;
+        pos.y = e.clientY - rectB.top;
+        
+      }
+
+    function base64ToArrayBuffer(base64) {
+        var binary_string =  window.atob(base64);
+        var len = binary_string.length;
+        var bytes = new Uint8Array( len );
+        for (var i = 0; i < len; i++)        {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes;
+    }
+
+    function draw(e) {
+        // mouse left button must be pressed
+        if (e.buttons !== 1) return;
+
+        ctx.beginPath(); // begin
+
+        ctx.lineWidth = document.getElementById('lineWidthSize').value;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#fff';
+
+        ctx.moveTo(pos.x, pos.y); // from
+        setPosition(e);
+        ctx.lineTo(pos.x, pos.y); // to
+
+        ctx.stroke(); // draw it!
+        
+        }
+    
+   
+
+    function clearCanvas(){
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function processImage ()
+    {
+        var hidden=document.getElementById('uri');
+        var img=document.createElement('img');
+        var url=canvas.toDataURL();
+        img.src = url;
+        //document.body.appendChild(img); 
+        var data=url;
+        hidden.value=data;
+    }
+         
+
+     
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+opencv-python
+keras
+flask
+numpy
+h5py
+Pillow
+pybase64
+https://files.pythonhosted.org/packages/ee/e6/a6d371306c23c2b01cd2cb38909673d17ddd388d9e4b3c0f6602bfd972c8/tensorflow-1.10.0-cp36-cp36m-manylinux1_x86_64.whl
+python-resize-image

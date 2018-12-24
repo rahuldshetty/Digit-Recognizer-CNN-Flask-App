@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+</head>
+<body>
+
+    <a href="/" style="font-family:'Russo One', sans-serif;color:#009688;font-size:40px;text-decoration:none;dispaly:block;">
+        Digit Recognizer with Convolutional neural network
+    </a>
+    <br>
+
+    <p style="font-family: 'Russo One', sans-serif;color:#039BE5;font-size:25px;display:inline-block;">
+        Predicted Value : <p style="font-family: 'Russo One', sans-serif;color:#FF5722;font-size:30px;display:inline-block;"> {{ result.ans }} </p> 
+    </p>
+
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    
+
+   
+    <script>
+    window.onload = function () {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            theme: "dark2", // "light1", "light2", "dark1", "dark2"
+            title:{
+                text: "Prediction Values"
+            },
+            axisY: {
+                title: "Percentage"
+            },
+            data: [{        
+                type: "column",  
+                dataPoints: [     
+                     {% for i in range(10) %}
+                       { y:{{result.data[i]}} , label: "{{i}}" } ,
+                    {% endfor %}
+                ]
+            }]
+        });
+        chart.render();
+
+        }
+
+    </script>
+
+
+</body>
+</html>
