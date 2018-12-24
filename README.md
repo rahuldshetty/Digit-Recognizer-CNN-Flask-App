@@ -17,7 +17,7 @@ You can test the demo of this project over here: (https://digitcnn.herokuapp.com
 
 Python 3
 Opencv
-keras
+keras 
 tensorflow (backend for keras)
 flask
 numpy
@@ -35,16 +35,5 @@ To install a dependency pybase64 , use the following command: "pip install pybas
 ![2](https://raw.githubusercontent.com/rahuldshetty/Digit-Recognizer-CNN-Flask-App/master/snap2.PNG)
 ![3](https://raw.githubusercontent.com/rahuldshetty/Digit-Recognizer-CNN-Flask-App/master/snap3.PNG)
 ![4](https://raw.githubusercontent.com/rahuldshetty/Digit-Recognizer-CNN-Flask-App/master/snap4.PNG)
-
-
-## Built With
-
-* [Flask] (http://flask.pocoo.org/)
-* [Keras](keras.io/)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 
 
